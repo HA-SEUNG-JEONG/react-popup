@@ -6,7 +6,7 @@ interface ErrorProps {
 
 const Toast = ({ isError }: ErrorProps) => {
   return (
-    <Notification error={isError ? "true" : "false"}>
+    <Notification $error={isError}>
       <p>{isError ? "Fail" : "Success"}</p>
       <Progress></Progress>
     </Notification>
@@ -31,7 +31,7 @@ const Load = keyframes`
   }
 `;
 
-const Notification = styled.section<{ error: string }>`
+const Notification = styled.section<{ $error: boolean }>`
   position: absolute;
   top: 1.25rem;
   left: 50%;
@@ -53,8 +53,7 @@ const Notification = styled.section<{ error: string }>`
     font-size: 20px;
     font-weight: 900;
   }
-  background-color: ${({ error }) =>
-    error === "true" ? "#E74C3C" : "rgb(7, 188, 12)"};
+  background-color: ${({ $error }) => ($error ? "#E74C3C" : "rgb(7, 188, 12)")};
 `;
 
 const Progress = styled.span`
