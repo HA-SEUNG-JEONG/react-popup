@@ -46,8 +46,6 @@ const Form = () => {
   const handleDeleteToast = () => {
     setShowToast(false);
     setSubmitError(false);
-    setEmail("");
-    setPassword("");
   };
 
   return (
