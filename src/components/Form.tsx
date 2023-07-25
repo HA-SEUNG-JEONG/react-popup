@@ -43,9 +43,16 @@ const Form = () => {
     }
   }, [showToast]);
 
+  const handleDeleteToast = () => {
+    setShowToast(false);
+    setSubmitError(false);
+    setEmail("");
+    setPassword("");
+  };
+
   return (
     <FormBox>
-      {showToast && <Toast isError={submitError} />}
+      {showToast && <Toast isError={submitError} onClick={handleDeleteToast} />}
       <Forms onSubmit={handleSubmit}>
         <FormContainer>
           <input

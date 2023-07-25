@@ -2,13 +2,15 @@ import styled, { keyframes } from "styled-components";
 
 interface ErrorProps {
   isError: boolean;
+  onClick: () => void;
 }
 
-const Toast = ({ isError }: ErrorProps) => {
+const Toast = ({ isError, onClick }: ErrorProps) => {
   return (
     <Notification $error={isError}>
       <p>{isError ? "Fail" : "Success"}</p>
       <Progress></Progress>
+      <DeleteButton onClick={onClick}>X</DeleteButton>
     </Notification>
   );
 };
@@ -67,6 +69,18 @@ const Progress = styled.span`
   background-image: linear-gradient(to right, #539bdb, #3250bf);
   border-radius: inherit;
   animation: ${Load} 4s 0.25s linear forwards;
+`;
+
+const DeleteButton = styled.button`
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  height: 3rem;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
 `;
 
 export default Toast;
